@@ -1,8 +1,15 @@
-fastapi
-uvicorn
-gunicorn
-requests
-urllib3
-charset-normalizer
-idna
-certifi
+fastapi==0.115.2
+uvicorn[standard]==0.31.1
+gunicorn==23.0.0
+
+# Data processing
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.14.1
+
+# Networking
+requests==2.32.3
+urllib3==2.2.3
+charset-normalizer==3.4.0
+idna==3.10
+certifi==2025.8.3
