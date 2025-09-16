@@ -1,8 +1,17 @@
 from fastapi import FastAPI, HTTPException
-import json
+from fastapi.middleware.cors import CORSMiddleware
 import odin_backend
 
 app = FastAPI()
+
+# ✅ Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # change to ["http://localhost:5173"] in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def read_root():
@@ -17,6 +26,5 @@ def plan_trajectory():
             "message": "Trajectory planning completed successfully.",
             "decision": decision_data
         }
-
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
